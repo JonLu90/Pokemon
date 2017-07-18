@@ -13,11 +13,19 @@ class Cell: UICollectionViewCell {
     }
     
     func configureCell(pokemonData: Pokemon) {
-        // TO DO
+        
+        descriptionLabel.text = pokemonData.name
+        descriptionLabel.textAlignment = .center
+        descriptionLabel.textColor = UIColor.white
+        
+        let imageThumbnail = UIImage(named: "\(pokemonData.pokedexId)")
+        pokemonImageView.image = imageThumbnail
     }
     
     func setUI() {
         backgroundColor = UIColor.blue
+        layer.cornerRadius = 8.0
+        clipsToBounds = true
         
         contentView.addSubview(descriptionLabel)
         contentView.addSubview(pokemonImageView)
@@ -48,6 +56,7 @@ class Cell: UICollectionViewCell {
     let pokemonImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = UIViewContentMode.scaleAspectFit
         
         return imageView
     }()
